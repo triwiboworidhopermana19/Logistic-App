@@ -49,8 +49,8 @@
                     <div class="item-inner">
                       <div class="item-title item-label">Password</div>
                       <div class="item-input-wrap">
-                        <input type="password" placeholder="Password" id="dz-password" class="form-control" />
-                        <div class="show-pass">
+                        <input :type="passwordInputType" placeholder="Password" id="dz-password" class="form-control" />
+                        <div :class="eyeIconStyle" @click="changePasswordVisibility">
                           <svg width="24" height="24" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
                             <path
                               d="M22.919 11.606C22.786 11.3 19.572 4.00002 12 4.00002C4.42801 4.00002 1.21401 11.3 1.08101 11.606C1.02764 11.7305 1.00012 11.8646 1.00012 12C1.00012 12.1355 1.02764 12.2695 1.08101 12.394C1.21401 12.7 4.42801 20 12 20C19.572 20 22.786 12.7 22.919 12.394C22.9724 12.2695 22.9999 12.1355 22.9999 12C22.9999 11.8646 22.9724 11.7305 22.919 11.606ZM12 18C6.60001 18 3.83301 13.411 3.11001 12C3.83501 10.614 6.64801 6.00002 12 6.00002C17.394 6.00002 20.165 10.586 20.89 12C20.164 13.386 17.352 18 12 18Z"
@@ -78,3 +78,26 @@
     </div>
   </f7-page>
 </template>
+
+<script>
+export default {
+  data() {
+    return {
+      passwordVisibility: false,
+    };
+  },
+  methods: {
+    changePasswordVisibility() {
+      this.passwordVisibility = !this.passwordVisibility;
+    },
+  },
+  computed: {
+    passwordInputType() {
+      return this.passwordVisibility ? "text" : "password";
+    },
+    eyeIconStyle() {
+      return this.passwordVisibility ? "show-pass active" : "show-pass";
+    },
+  },
+};
+</script>
