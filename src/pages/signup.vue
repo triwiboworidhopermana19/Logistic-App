@@ -68,7 +68,7 @@
                 </ul>
               </div>
               <div class="clearfix text-align-center pb-30">
-                <a href="/signin/" class="button-large button button-fill rounded-xl button-gray">SIGN UP</a>
+                <a href="/login/" class="button-large button button-fill rounded-xl button-gray">SIGN UP</a>
                 <p class="form-text">By tapping Sign up you accept all our <a href="#">terms</a> and <a href="#">condition</a></p>
               </div>
             </form>

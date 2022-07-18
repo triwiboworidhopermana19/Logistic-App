@@ -21,7 +21,14 @@
     </f7-panel>
 
     <!-- Your main view, should have "view-main" class -->
-    <f7-view main class="safe-areas" :push-state="true"></f7-view>
+    <f7-view
+      main
+      class="safe-areas"
+      browserHistory
+      :push-state="true"
+      push-state-separator=""
+      :reloadPages="true"
+    ></f7-view>
 
     <!-- Popup -->
     <f7-popup id="my-popup">
@@ -44,12 +51,28 @@
         <f7-page login-screen>
           <f7-login-screen-title>Login</f7-login-screen-title>
           <f7-list form>
-            <f7-list-input type="text" name="username" placeholder="Your username" v-model:value="username"></f7-list-input>
-            <f7-list-input type="password" name="password" placeholder="Your password" v-model:value="password"></f7-list-input>
+            <f7-list-input
+              type="text"
+              name="username"
+              placeholder="Your username"
+              v-model:value="username"
+            ></f7-list-input>
+            <f7-list-input
+              type="password"
+              name="password"
+              placeholder="Your password"
+              v-model:value="password"
+            ></f7-list-input>
           </f7-list>
           <f7-list>
-            <f7-list-button title="Sign In" @click="alertLoginData"></f7-list-button>
-            <f7-block-footer> Some text about login information.<br />Click "Sign In" to close Login Screen </f7-block-footer>
+            <f7-list-button
+              title="Sign In"
+              @click="alertLoginData"
+            ></f7-list-button>
+            <f7-block-footer>
+              Some text about login information.<br />Click "Sign In" to close
+              Login Screen
+            </f7-block-footer>
           </f7-list>
         </f7-page>
       </f7-view>
@@ -95,9 +118,12 @@ export default {
     const password = ref("");
 
     const alertLoginData = () => {
-      f7.dialog.alert("Username: " + username.value + "<br>Password: " + password.value, () => {
-        f7.loginScreen.close();
-      });
+      f7.dialog.alert(
+        "Username: " + username.value + "<br>Password: " + password.value,
+        () => {
+          f7.loginScreen.close();
+        }
+      );
     };
     onMounted(() => {
       f7ready(() => {

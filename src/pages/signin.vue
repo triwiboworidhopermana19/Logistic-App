@@ -5,7 +5,13 @@
         <div class="container">
           <div class="main-logo left">
             <div class="logo-icon">
-              <svg width="35" height="40" viewBox="0 0 80 92" fill="none" xmlns="http://www.w3.org/2000/svg">
+              <svg
+                width="35"
+                height="40"
+                viewBox="0 0 80 92"
+                fill="none"
+                xmlns="http://www.w3.org/2000/svg"
+              >
                 <path
                   d="M71.9842 92.0001H4.06284C2.07803 92.0001 0.469116 90.3912 0.469116 88.4064C0.469116 86.4216 2.07803 84.8127 4.06284 84.8127H71.9842C73.969 84.8127 75.5779 86.4216 75.5779 88.4064C75.5779 90.3912 73.969 92.0001 71.9842 92.0001Z"
                   fill="#F7DBB3"
@@ -25,7 +31,10 @@
             <form class="tab tab-active" id="tabA1">
               <div class="title-head">
                 <h2 class="title">Sign In</h2>
-                <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor</p>
+                <p>
+                  Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed
+                  do eiusmod tempor
+                </p>
               </div>
               <div class="list">
                 <ul class="row">
@@ -33,7 +42,12 @@
                     <div class="item-inner">
                       <div class="item-title item-label">Username</div>
                       <div class="item-input-wrap">
-                        <input type="email" placeholder="Email Address" value="info@example.com" class="form-control" />
+                        <input
+                          type="email"
+                          placeholder="Email Address"
+                          value="info@example.com"
+                          class="form-control"
+                        />
                       </div>
                     </div>
                   </li>
@@ -41,9 +55,22 @@
                     <div class="item-inner">
                       <div class="item-title item-label">Password</div>
                       <div class="item-input-wrap">
-                        <input type="password" placeholder="Password" class="form-control" />
-                        <div class="show-pass">
-                          <svg width="24" height="24" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
+                        <input
+                          :type="passwordInputType"
+                          placeholder="Password"
+                          class="form-control"
+                        />
+                        <div
+                          :class="eyeIconStyle"
+                          @click="changePasswordVisibility"
+                        >
+                          <svg
+                            width="24"
+                            height="24"
+                            viewBox="0 0 24 24"
+                            fill="none"
+                            xmlns="http://www.w3.org/2000/svg"
+                          >
                             <path
                               d="M22.919 11.606C22.786 11.3 19.572 4.00002 12 4.00002C4.42801 4.00002 1.21401 11.3 1.08101 11.606C1.02764 11.7305 1.00012 11.8646 1.00012 12C1.00012 12.1355 1.02764 12.2695 1.08101 12.394C1.21401 12.7 4.42801 20 12 20C19.572 20 22.786 12.7 22.919 12.394C22.9724 12.2695 22.9999 12.1355 22.9999 12C22.9999 11.8646 22.9724 11.7305 22.919 11.606ZM12 18C6.60001 18 3.83301 13.411 3.11001 12C3.83501 10.614 6.64801 6.00002 12 6.00002C17.394 6.00002 20.165 10.586 20.89 12C20.164 13.386 17.352 18 12 18Z"
                               fill="#309F5F"
@@ -60,19 +87,42 @@
                 </ul>
               </div>
               <div class="clearfix">
-                <a href="/home/" class="button-large button rounded-xl button-fill">LOGIN</a>
-                <p class="form-text">Forgot Password? <a href="#tabA2" data-route-tab-id="tabA2" class="tab-link ml-5">Reset Password</a></p>
+                <a
+                  href="/"
+                  class="button-large button rounded-xl button-fill"
+                  >LOGIN</a
+                >
+                <p class="form-text">
+                  Forgot Password?
+                  <a
+                    href="#tabA2"
+                    data-route-tab-id="tabA2"
+                    class="tab-link ml-5"
+                    >Reset Password</a
+                  >
+                </p>
               </div>
               <div class="text-align-center account-footer pb-30">
                 <p class="mt-0">Dont have any account?</p>
-                <a href="/register/" class="button-large button rounded-xl button-fill button-secondary">CREATE AN ACCOUNT</a>
+                <a
+                  href="/register/"
+                  class="
+                    button-large button
+                    rounded-xl
+                    button-fill button-secondary
+                  "
+                  >CREATE AN ACCOUNT</a
+                >
               </div>
             </form>
 
             <form class="tab" id="tabA2">
               <div class="title-head">
                 <h2 class="title">Forget Password</h2>
-                <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor</p>
+                <p>
+                  Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed
+                  do eiusmod tempor
+                </p>
               </div>
               <div class="list">
                 <ul>
@@ -80,9 +130,22 @@
                     <div class="item-inner">
                       <div class="item-title item-label">Password</div>
                       <div class="item-input-wrap">
-                        <input type="password" placeholder="Password" class="form-control" />
-                        <div class="show-pass">
-                          <svg width="24" height="24" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
+                        <input
+                          :type="passwordInputType"
+                          placeholder="Password"
+                          class="form-control"
+                        />
+                        <div
+                          :class="eyeIconStyle"
+                          @click="changePasswordVisibility"
+                        >
+                          <svg
+                            width="24"
+                            height="24"
+                            viewBox="0 0 24 24"
+                            fill="none"
+                            xmlns="http://www.w3.org/2000/svg"
+                          >
                             <path
                               d="M22.919 11.606C22.786 11.3 19.572 4.00002 12 4.00002C4.42801 4.00002 1.21401 11.3 1.08101 11.606C1.02764 11.7305 1.00012 11.8646 1.00012 12C1.00012 12.1355 1.02764 12.2695 1.08101 12.394C1.21401 12.7 4.42801 20 12 20C19.572 20 22.786 12.7 22.919 12.394C22.9724 12.2695 22.9999 12.1355 22.9999 12C22.9999 11.8646 22.9724 11.7305 22.919 11.606ZM12 18C6.60001 18 3.83301 13.411 3.11001 12C3.83501 10.614 6.64801 6.00002 12 6.00002C17.394 6.00002 20.165 10.586 20.89 12C20.164 13.386 17.352 18 12 18Z"
                               fill="#309F5F"
@@ -99,8 +162,21 @@
                 </ul>
               </div>
               <div class="clearfix pb-30">
-                <a href="/home/" class="button-large button rounded-xl button-fill">SUBMIT</a>
-                <p class="form-text">Sign in to your registered <a href="#tabA1" data-route-tab-id="tabA1" class="tab-link ml-5">Login here</a></p>
+                <a
+                  href="/login/"
+                  class="button-large button rounded-xl button-fill"
+                  data-reload-current="true"
+                  >SUBMIT</a
+                >
+                <p class="form-text">
+                  Sign in to your registered
+                  <a
+                    href="#tabA1"
+                    data-route-tab-id="tabA1"
+                    class="tab-link ml-5"
+                    >Login here</a
+                  >
+                </p>
               </div>
             </form>
           </div>
@@ -109,3 +185,26 @@
     </div>
   </f7-page>
 </template>
+
+<script>
+export default {
+  data() {
+    return {
+      passwordVisibility: false,
+    };
+  },
+  methods: {
+    changePasswordVisibility() {
+      this.passwordVisibility = !this.passwordVisibility;
+    },
+  },
+  computed: {
+    passwordInputType() {
+      return this.passwordVisibility ? "text" : "password";
+    },
+    eyeIconStyle() {
+      return this.passwordVisibility ? "show-pass active" : "show-pass";
+    },
+  },
+};
+</script>
