@@ -3,6 +3,8 @@ import AboutPage from "../pages/about.vue";
 import FormPage from "../pages/form.vue";
 import SigninPage from "../pages/signin.vue";
 import SignupPage from "../pages/signup.vue";
+import OrderPage from "../pages/order-details.vue";
+import ShoppingCartPage from "../pages/shopping-cart.vue";
 
 import DynamicRoutePage from "../pages/dynamic-route.vue";
 import RequestAndLoad from "../pages/request-and-load.vue";
@@ -11,6 +13,18 @@ import NotFoundPage from "../pages/404.vue";
 var routes = [
   {
     path: "/",
+    component: HomePage,
+  },
+  {
+    path: "/shopping-cart/",
+    component: ShoppingCartPage,
+  },
+  {
+    path: "/order/",
+    component: OrderPage,
+  },
+  {
+    path: "/home/",
     component: HomePage,
   },
   {
