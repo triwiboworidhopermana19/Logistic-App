@@ -28,7 +28,7 @@
             </div>
           </div>
           <div class="tab tab-active form-elements tabs">
-            <form class="tab tab-active" id="tabA1">
+            <form class="tab tab-active" id="tabA1" @submit.prevent="signin">
               <div class="title-head">
                 <h2 class="title">Sign In</h2>
                 <p>
@@ -43,9 +43,9 @@
                       <div class="item-title item-label">Username</div>
                       <div class="item-input-wrap">
                         <input
-                          type="email"
-                          placeholder="Email Address"
-                          value="info@example.com"
+                          v-model="username"
+                          type="text"
+                          placeholder="Username"
                           class="form-control"
                         />
                       </div>
@@ -56,6 +56,7 @@
                       <div class="item-title item-label">Password</div>
                       <div class="item-input-wrap">
                         <input
+                          v-model="password"
                           :type="passwordInputType"
                           placeholder="Password"
                           class="form-control"
@@ -87,11 +88,12 @@
                 </ul>
               </div>
               <div class="clearfix">
-                <a
-                  href="/"
+                <button
                   class="button-large button rounded-xl button-fill"
-                  >LOGIN</a
+                  type="submit"
                 >
+                  LOGIN
+                </button>
                 <p class="form-text">
                   Forgot Password?
                   <a
@@ -128,49 +130,30 @@
                 <ul>
                   <li class="item-content col-100 item-input">
                     <div class="item-inner">
-                      <div class="item-title item-label">Password</div>
+                      <div class="item-title item-label">Email</div>
                       <div class="item-input-wrap">
                         <input
-                          :type="passwordInputType"
-                          placeholder="Password"
+                          v-model="email"
+                          type="email"
+                          placeholder="Email Address"
                           class="form-control"
                         />
-                        <div
-                          :class="eyeIconStyle"
-                          @click="changePasswordVisibility"
-                        >
-                          <svg
-                            width="24"
-                            height="24"
-                            viewBox="0 0 24 24"
-                            fill="none"
-                            xmlns="http://www.w3.org/2000/svg"
-                          >
-                            <path
-                              d="M22.919 11.606C22.786 11.3 19.572 4.00002 12 4.00002C4.42801 4.00002 1.21401 11.3 1.08101 11.606C1.02764 11.7305 1.00012 11.8646 1.00012 12C1.00012 12.1355 1.02764 12.2695 1.08101 12.394C1.21401 12.7 4.42801 20 12 20C19.572 20 22.786 12.7 22.919 12.394C22.9724 12.2695 22.9999 12.1355 22.9999 12C22.9999 11.8646 22.9724 11.7305 22.919 11.606ZM12 18C6.60001 18 3.83301 13.411 3.11001 12C3.83501 10.614 6.64801 6.00002 12 6.00002C17.394 6.00002 20.165 10.586 20.89 12C20.164 13.386 17.352 18 12 18Z"
-                              fill="#309F5F"
-                            />
-                            <path
-                              d="M12 8C11.2089 8 10.4355 8.2346 9.77772 8.67412C9.11993 9.11365 8.60723 9.73836 8.30448 10.4693C8.00173 11.2002 7.92252 12.0044 8.07686 	12.7804C8.2312 13.5563 8.61216 14.269 9.17157 14.8284C9.73098 15.3878 10.4437 15.7688 11.2196 15.9231C11.9956 16.0775 12.7998 15.9983 13.5307 15.6955C14.2616 15.3928 14.8864 14.8801 15.3259 14.2223C15.7654 13.5645 16 12.7911 16 12C16 10.9391 15.5786 9.92172 14.8284 9.17157C14.0783 8.42143 13.0609 8 12 8ZM12 14C11.6044 14 11.2178 13.8827 10.8889 13.6629C10.56 13.4432 10.3036 13.1308 10.1522 12.7654C10.0009 12.3999 9.96126 11.9978 10.0384 11.6098C10.1156 11.2219 10.3061 10.8655 10.5858 10.5858C10.8655 10.3061 11.2219 10.1156 11.6098 10.0384C11.9978 9.96126 12.3999 10.0009 12.7654 10.1522C13.1308 10.3036 13.4432 10.56 13.6629 10.8889C13.8827 11.2178 14 11.6044 14 12C14 12.5304 13.7893 13.0391 13.4142 13.4142C13.0391 13.7893 12.5304 14 12 14Z"
-                              fill="#309F5F"
-                            />
-                          </svg>
-                        </div>
                       </div>
                     </div>
                   </li>
                 </ul>
               </div>
               <div class="clearfix pb-30">
-                <a
-                  href="/login/"
+                <button
                   class="button-large button rounded-xl button-fill"
-                  data-reload-current="true"
-                  >SUBMIT</a
+                  @click.prevent="forgotPassword"
                 >
+                  SUBMIT
+                </button>
                 <p class="form-text">
                   Sign in to your registered
                   <a
+                    ref="tab2-anchor"
                     href="#tabA1"
                     data-route-tab-id="tabA1"
                     class="tab-link ml-5"
@@ -187,15 +170,66 @@
 </template>
 
 <script>
+import { f7 } from "framework7-vue";
+import { login, forgotPassword } from "../js/api/auth";
+
 export default {
+  props: {
+    f7route: Object,
+    f7router: Object,
+  },
   data() {
     return {
+      username: "",
+      password: "",
+      email: "",
       passwordVisibility: false,
     };
   },
   methods: {
     changePasswordVisibility() {
       this.passwordVisibility = !this.passwordVisibility;
+    },
+    async signin() {
+      const loading = f7.dialog.progress();
+
+      const [_, error] = await login({
+        username: this.username,
+        password: this.password,
+      });
+
+      loading.close();
+
+      if (error) {
+        f7.toast.show({
+          text: error.message,
+          closeTimeout: 2000,
+          cssClass: "auth-error",
+        });
+
+        return;
+      }
+
+      this.f7router.navigate("/");
+    },
+    async forgotPassword() {
+      const loading = f7.dialog.progress();
+
+      const [_, error] = await forgotPassword({ email: this.email });
+
+      loading.close();
+
+      if (error) {
+        f7.toast.show({
+          text: error.message,
+          closeTimeout: 2000,
+          cssClass: "auth-error",
+        });
+
+        return;
+      }
+
+      this.$refs["tab2-anchor"].click();
     },
   },
   computed: {
@@ -208,3 +242,13 @@ export default {
   },
 };
 </script>
+
+<style>
+.auth-error {
+  background-color: #ff3b30 !important;
+}
+
+.auth-forgot {
+  background-color: #4cd964 !important;
+}
+</style>
