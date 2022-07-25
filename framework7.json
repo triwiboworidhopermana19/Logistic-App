@@ -1,0 +1,32 @@
+{
+  "cwd": "C:\\Users\\HP VICTUS\\Downloads\\Project",
+  "type": [
+    "cordova"
+  ],
+  "name": "My App",
+  "framework": "vue",
+  "template": "single-view",
+  "bundler": "vite",
+  "cssPreProcessor": "scss",
+  "theming": {
+    "customColor": false,
+    "color": "#007aff",
+    "darkTheme": true,
+    "iconFonts": true,
+    "fillBars": true
+  },
+  "customBuild": false,
+  "pkg": "io.framework7.myapp",
+  "cordova": {
+    "folder": "cordova",
+    "platforms": [
+      "ios",
+      "android"
+    ],
+    "plugins": [
+      "cordova-plugin-statusbar",
+      "cordova-plugin-keyboard",
+      "cordova-plugin-splashscreen"
+    ]
+  }
+}
