@@ -238,13 +238,3 @@ export default {
   },
 };
 </script>
-
-<style>
-.auth-error {
-  background-color: #ff3b30 !important;
-}
-
-.auth-forgot {
-  background-color: #4cd964 !important;
-}
-</style>

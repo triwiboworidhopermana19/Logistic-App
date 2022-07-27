@@ -686,3 +686,11 @@ code {
 .pie-chart svg {
   max-width: 320px;
 }
+
+.auth-error {
+  background-color: #ff3b30 !important;
+}
+
+.auth-forgot {
+  background-color: #4cd964 !important;
+}
