@@ -5,7 +5,13 @@
         <div class="container">
           <div class="main-logo left">
             <div class="logo-icon">
-              <svg width="35" height="40" viewBox="0 0 80 92" fill="none" xmlns="http://www.w3.org/2000/svg">
+              <svg
+                width="35"
+                height="40"
+                viewBox="0 0 80 92"
+                fill="none"
+                xmlns="http://www.w3.org/2000/svg"
+              >
                 <path
                   d="M71.9842 92.0001H4.06284C2.07803 92.0001 0.469116 90.3912 0.469116 88.4064C0.469116 86.4216 2.07803 84.8127 4.06284 84.8127H71.9842C73.969 84.8127 75.5779 86.4216 75.5779 88.4064C75.5779 90.3912 73.969 92.0001 71.9842 92.0001Z"
                   fill="#F7DBB3"
@@ -22,18 +28,32 @@
             </div>
           </div>
           <div class="form-elements">
-            <form>
+            <form @submit.prevent="signUp">
               <div class="title-head">
                 <h2 class="title">Create an account</h2>
-                <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor</p>
+                <p>
+                  Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed
+                  do eiusmod tempor
+                </p>
               </div>
               <div class="list">
                 <ul class="row">
-                  <li class="item-content col-100 item-input item-input-with-value">
+                  <li
+                    class="
+                      item-content
+                      col-100
+                      item-input item-input-with-value
+                    "
+                  >
                     <div class="item-inner">
                       <div class="item-title item-label">Username</div>
                       <div class="item-input-wrap">
-                        <input type="text" placeholder="First Name" value="Roberto Karlos" class="form-control" />
+                        <input
+                          v-model="username"
+                          type="text"
+                          placeholder="Username"
+                          class="form-control"
+                        />
                       </div>
                     </div>
                   </li>
@@ -41,7 +61,12 @@
                     <div class="item-inner">
                       <div class="item-title item-label">Email</div>
                       <div class="item-input-wrap">
-                        <input type="email" placeholder="Email Address" class="form-control" value="example@gmail.com" />
+                        <input
+                          v-model="email"
+                          type="email"
+                          placeholder="Email Address"
+                          class="form-control"
+                        />
                       </div>
                     </div>
                   </li>
@@ -49,9 +74,24 @@
                     <div class="item-inner">
                       <div class="item-title item-label">Password</div>
                       <div class="item-input-wrap">
-                        <input :type="passwordInputType" placeholder="Password" id="dz-password" class="form-control" />
-                        <div :class="eyeIconStyle" @click="changePasswordVisibility">
-                          <svg width="24" height="24" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
+                        <input
+                          v-model="password"
+                          :type="passwordInputType"
+                          placeholder="Password"
+                          id="dz-password"
+                          class="form-control"
+                        />
+                        <div
+                          :class="eyeIconStyle"
+                          @click="changePasswordVisibility"
+                        >
+                          <svg
+                            width="24"
+                            height="24"
+                            viewBox="0 0 24 24"
+                            fill="none"
+                            xmlns="http://www.w3.org/2000/svg"
+                          >
                             <path
                               d="M22.919 11.606C22.786 11.3 19.572 4.00002 12 4.00002C4.42801 4.00002 1.21401 11.3 1.08101 11.606C1.02764 11.7305 1.00012 11.8646 1.00012 12C1.00012 12.1355 1.02764 12.2695 1.08101 12.394C1.21401 12.7 4.42801 20 12 20C19.572 20 22.786 12.7 22.919 12.394C22.9724 12.2695 22.9999 12.1355 22.9999 12C22.9999 11.8646 22.9724 11.7305 22.919 11.606ZM12 18C6.60001 18 3.83301 13.411 3.11001 12C3.83501 10.614 6.64801 6.00002 12 6.00002C17.394 6.00002 20.165 10.586 20.89 12C20.164 13.386 17.352 18 12 18Z"
                               fill="#309F5F"
@@ -68,8 +108,17 @@
                 </ul>
               </div>
               <div class="clearfix text-align-center pb-30">
-                <a href="/login/" class="button-large button button-fill rounded-xl button-gray">SIGN UP</a>
-                <p class="form-text">By tapping Sign up you accept all our <a href="#">terms</a> and <a href="#">condition</a></p>
+                <button
+                  type="submit"
+                  :class="`button-large button button-fill rounded-xl ${!formValid ? 'button-gray' : ''}`"
+                  :disabled="!formValid"
+                >
+                  SIGN UP
+                </button>
+                <p class="form-text">
+                  By tapping Sign up you accept all our
+                  <a href="#">terms</a> and <a href="#">condition</a>
+                </p>
               </div>
             </form>
           </div>
@@ -80,15 +129,48 @@
 </template>
 
 <script>
+import { f7 } from "framework7-vue";
+import { register } from "../js/api/auth";
+
 export default {
+  props: {
+    f7route: Object,
+    f7router: Object,
+  },
   data() {
     return {
       passwordVisibility: false,
+      username: "",
+      email: "",
+      password: "",
     };
   },
   methods: {
     changePasswordVisibility() {
       this.passwordVisibility = !this.passwordVisibility;
+    },
+    async signUp() {
+      const loading = f7.dialog.progress();
+
+      const [_, error] = await register(
+        this.username,
+        this.email,
+        this.password
+      );
+
+      loading.close();
+
+      if (error) {
+        f7.toast.show({
+          text: error.message,
+          closeTimeout: 2000,
+          cssClass: "auth-error",
+        });
+
+        return;
+      }
+
+      this.f7router.navigate("/login/");
     },
   },
   computed: {
@@ -97,6 +179,13 @@ export default {
     },
     eyeIconStyle() {
       return this.passwordVisibility ? "show-pass active" : "show-pass";
+    },
+    formValid() {
+      return (
+        this.username.length > 0 &&
+        this.email.length > 0 &&
+        this.password.length > 0
+      );
     },
   },
 };

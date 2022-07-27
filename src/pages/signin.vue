@@ -28,7 +28,7 @@
             </div>
           </div>
           <div class="tab tab-active form-elements tabs">
-            <form class="tab tab-active" id="tabA1" @submit.prevent="signin">
+            <form class="tab tab-active" id="tabA1" @submit.prevent="signIn">
               <div class="title-head">
                 <h2 class="title">Sign In</h2>
                 <p>
@@ -153,7 +153,6 @@
                 <p class="form-text">
                   Sign in to your registered
                   <a
-                    ref="tab2-anchor"
                     href="#tabA1"
                     data-route-tab-id="tabA1"
                     class="tab-link ml-5"
@@ -190,13 +189,10 @@ export default {
     changePasswordVisibility() {
       this.passwordVisibility = !this.passwordVisibility;
     },
-    async signin() {
+    async signIn() {
       const loading = f7.dialog.progress();
 
-      const [_, error] = await login({
-        username: this.username,
-        password: this.password,
-      });
+      const [_, error] = await login(this.username, this.password);
 
       loading.close();
 
@@ -215,7 +211,7 @@ export default {
     async forgotPassword() {
       const loading = f7.dialog.progress();
 
-      const [_, error] = await forgotPassword({ email: this.email });
+      const [_, error] = await forgotPassword(this.email);
 
       loading.close();
 
@@ -229,7 +225,7 @@ export default {
         return;
       }
 
-      this.$refs["tab2-anchor"].click();
+      this.f7router.navigate("/");
     },
   },
   computed: {
