@@ -5,6 +5,13 @@ import SigninPage from "../pages/signin.vue";
 import SignupPage from "../pages/signup.vue";
 import OrderPage from "../pages/order-details.vue";
 import ShoppingCartPage from "../pages/shopping-cart.vue";
+import TrackingPage from "../pages/tracking.vue";
+import WishlistPage from "../pages/wishlist.vue";
+import NotificationsAppPage from "../pages/notifications-app.vue";
+import StoreLocationsPage from "../pages/store-locations.vue";
+import RewardsPage from "../pages/rewards.vue";
+import ProfilePage from "../pages/profile.vue";
+import WriteRiviewsPage from "../pages/write-reviews.vue";
 
 import DynamicRoutePage from "../pages/dynamic-route.vue";
 import RequestAndLoad from "../pages/request-and-load.vue";
@@ -14,6 +21,34 @@ var routes = [
   {
     path: "/",
     component: HomePage,
+  },
+  {
+    path: "/write-reviews/",
+    component: WriteRiviewsPage,
+  },
+  {
+    path: "/profile/",
+    component: ProfilePage,
+  },
+  {
+    path: "/rewards/",
+    component: RewardsPage,
+  },
+  {
+    path: "/store-locations/",
+    component: StoreLocationsPage,
+  },
+  {
+    path: "/notifications-app/",
+    component: NotificationsAppPage,
+  },
+  {
+    path: "/wishlist/",
+    component: WishlistPage,
+  },
+  {
+    path: "/tracking/",
+    component: TrackingPage,
   },
   {
     path: "/shopping-cart/",
