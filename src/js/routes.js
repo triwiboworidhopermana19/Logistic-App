@@ -12,6 +12,7 @@ import StoreLocationsPage from "../pages/store-locations.vue";
 import RewardsPage from "../pages/rewards.vue";
 import ProfilePage from "../pages/profile.vue";
 import WriteRiviewsPage from "../pages/write-reviews.vue";
+import DeliveryPage from "../pages/delivery-form.vue";
 
 import DynamicRoutePage from "../pages/dynamic-route.vue";
 import RequestAndLoad from "../pages/request-and-load.vue";
@@ -21,6 +22,10 @@ var routes = [
   {
     path: "/",
     component: HomePage,
+  },
+  {
+    path: "/delivery",
+    component: DeliveryPage,
   },
   {
     path: "/write-reviews/",
