@@ -219,6 +219,22 @@
       </f7-view>
     </f7-popup>
 
+    <!--Toolbar-->
+    <f7-page>
+      <div class="toolbar tabbar tabbar-labels toolbar-bottom">
+        <div class="toolbar-inner">
+          <a href="#tab1" class="tab-link tab-link-active">
+            <i class="icon demo-icon-1"></i>
+            <span class="tabbar-label">Label 1</span>
+          </a>
+          <a href="#tab2" class="tab-link">
+            <i class="icon demo-icon-2"></i>
+            <span class="tabbar-label">Label 2</span>
+          </a>
+        </div>
+      </div>
+    </f7-page>
+
     <f7-login-screen id="my-login-screen">
       <f7-view>
         <f7-page login-screen>

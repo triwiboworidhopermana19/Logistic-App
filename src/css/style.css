@@ -2127,9 +2127,7 @@ h6,
 .card-overlay.style-2 .dz-meta ul li path {
   fill: #fff;
 }
-.card-overlay.style-2 .dz-meta ul li:last-child {
-  padidng-right: 0;
-}
+
 
 .overlay-swiper1 .swiper-slide {
   width: 205px;
@@ -2544,7 +2542,7 @@ h6,
 }
 .track-list li p {
   margin: 0;
-  font-size: 12px;
+  font-size: 12 px;
 }
 .track-list li:last-child {
   margin-bottom: 0;
@@ -3587,6 +3585,7 @@ h6,
 }
 .order-details .author-bx .info {
   margin-right: 20px;
+  margin-left: 40px;
 }
 .order-details .author-bx .info p {
   margin: 0;

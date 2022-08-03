@@ -1,5 +1,5 @@
 <template>
-  <f7-page name="delivery">
+  <f7-page name="delivery" >
     <div class="page account-area">
       <div class="page-content">
         <div class="container">
@@ -80,35 +80,6 @@
                 <button type="submit" :class="`button-large button button-fill rounded-xl ${!formValid ? 'button-orange' : ''}`" :disabled="!formValid">Submit</button>
               </div>
             </form>
-            <div class="toolbar tabbar tabbar-labels toolbar-bottom">
-              <div class="toolbar-inner">
-                <a href="#tab-1" class="tab-link tab-link-active">
-                  <i class="icon f7-icons if-not-md">envelope_fill</i>
-                  <i class="icon material-icons md-only">email</i>
-                  <span class="tabbar-label">Home</span>
-                </a>
-                <a href="#tab-2" class="tab-link">
-                  <i class="icon f7-icons if-not-md">calendar_fill<span class="badge color-red">5</span></i>
-                  <i class="icon material-icons md-only">today<span class="badge color-red">5</span></i>
-                  <span class="tabbar-label">Search</span>
-                </a>
-                <a href="#tab-3" class="tab-link">
-                  <i class="icon f7-icons if-not-md">cloud_upload_fill</i>
-                  <i class="icon material-icons md-only">file_upload</i>
-                  <span class="tabbar-label">Add</span>
-                </a>
-                <a href="#tab-3" class="tab-link">
-                  <i class="icon f7-icons if-not-md">cloud_upload_fill</i>
-                  <i class="icon material-icons md-only">file_upload</i>
-                  <span class="tabbar-label">Track</span>
-                </a>
-                <a href="#tab-3" class="tab-link">
-                  <i class="icon f7-icons if-not-md">cloud_upload_fill</i>
-                  <i class="icon material-icons md-only">file_upload</i>
-                  <span class="tabbar-label">Profile</span>
-                </a>
-              </div>
-            </div>
           </div>
         </div>
       </div>
