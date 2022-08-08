@@ -14,6 +14,7 @@ import ProfilePage from "../pages/profile.vue";
 import WriteRiviewsPage from "../pages/write-reviews.vue";
 import DeliveryPage from "../pages/delivery-form.vue";
 import CollectionPage from "../pages/collection.vue";
+import PaymentPage from "../pages/payment.vue"
 
 import DynamicRoutePage from "../pages/dynamic-route.vue";
 import RequestAndLoad from "../pages/request-and-load.vue";
@@ -23,6 +24,10 @@ var routes = [
   {
     path: "/",
     component: HomePage,
+  },
+  {
+    path: "/payment/",
+    component: PaymentPage,
   },
   {
     path: "/collection",

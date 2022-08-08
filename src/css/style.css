@@ -28,6 +28,8 @@ Table of Sass Contents
   --f7-theme-color-light: #ebf6f0;
   --f7-theme-color-white: #fff;
   --border-color: #f3f3f3;
+  --f7-statusbar-height: 0px;
+  --f7-statusbar-bg-color: var(--f7-bars-bg-color);
 }
 
 /*
@@ -3111,6 +3113,14 @@ h6,
   margin-bottom: 0;
 }
 
+.payment .title{
+  font-size: 48px;
+  text-align: center;
+  background: #f9f9f9;
+  color: #1b1b1b;
+}
+
+
 .rating-info {
   margin: 40px 0 30px;
   text-align: center;
@@ -4570,5 +4580,11 @@ h6,
 .page-content .searchbar.search-box .searchbar-input-wrap .searchbar-icon:after {
   content: none;
 }
+
+hr.dash {
+  border-top: 1px dashed grey;
+  padding-bottom: 4px;
+}
+
 
 /*# sourceMappingURL=style.css.map */
