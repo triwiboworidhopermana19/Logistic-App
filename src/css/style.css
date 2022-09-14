@@ -407,7 +407,7 @@ h6,
 
 /* Padding Top */
 .pt-0 {
-  padding-top: 0;
+  padding-top: 0!important;
 }
 
 .pt-5 {
@@ -460,7 +460,7 @@ h6,
 
 /* Padding Bottom */
 .pb-0 {
-  padding-bottom: 0;
+  padding-bottom: 0!important;
 }
 
 .pb-5 {
@@ -513,7 +513,7 @@ h6,
 
 /* Padding Left */
 .pl-0 {
-  padding-left: 0;
+  padding-left: 0!important;
 }
 
 .pl-5 {
@@ -566,7 +566,7 @@ h6,
 
 /* Padding Right */
 .pr-0 {
-  padding-right: 0;
+  padding-right: 0!important;
 }
 
 .pr-5 {
@@ -830,6 +830,9 @@ h6,
 .mt-20 {
   margin-top: 20px;
 }
+.mt-24 {
+  margin-top: 24px;
+}
 
 .mt-30 {
   margin-top: 30px;
@@ -872,7 +875,7 @@ h6,
 }
 
 .mb-0 {
-  margin-bottom: 0;
+  margin-bottom: 0!important;
 }
 
 .mb-5 {
@@ -2130,7 +2133,6 @@ h6,
   fill: #fff;
 }
 
-
 .overlay-swiper1 .swiper-slide {
   width: 205px;
 }
@@ -3113,13 +3115,12 @@ h6,
   margin-bottom: 0;
 }
 
-.payment .title{
+.payment .title {
   font-size: 48px;
   text-align: center;
   background: #f9f9f9;
   color: #1b1b1b;
 }
-
 
 .rating-info {
   margin: 40px 0 30px;
@@ -4147,7 +4148,7 @@ h6,
   margin-right: 10px;
 }
 .navbar.navbar-style-1 {
-  height: 70px;
+  height: 50px;
 }
 .navbar.navbar-style-1 .navbar-inner .link.back {
   min-height: 46px;
@@ -4319,7 +4320,6 @@ h6,
   background-color: #fa6650;
   color: #ffffff;
 }
-
 
 .rounded-sm {
   border-radius: 8px;
@@ -4583,8 +4583,9 @@ h6,
 
 hr.dash {
   border-top: 1px dashed grey;
-  padding-bottom: 4px;
 }
-
+.statusbar {
+  background: pink;
+}
 
 /*# sourceMappingURL=style.css.map */

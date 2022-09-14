@@ -1,5 +1,6 @@
 <template>
 <div class="page">
+	<div class="page-content">
 	<div class="navbar navbar-style-1">
 		<div class="navbar-inner">
 			<a href="/home/" class="link back">
@@ -61,6 +62,7 @@
 				<a href="/home/" class="button-large rounded-xl button button-fill">SEND</a>
 			</form>
 		</div>
+	</div>
 	</div>
 </div>
 </template>

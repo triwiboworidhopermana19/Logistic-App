@@ -1,5 +1,5 @@
 <template>
-  <f7-page name="store-locations">
+  <f7-page name="lokasi-tujuan">
     <div class="page">
       <div class="navbar navbar-style-1 border-bottom">
         <div class="navbar-inner">
@@ -11,7 +11,7 @@
               />
             </svg>
           </a>
-          <div class="title">Our Stores</div>
+          <div class="title">LOKASI TUJUAN</div>
           <div class="right">
             <a href="#" class="link panel-open" data-panel="right">
               <svg width="24" height="24" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
@@ -30,43 +30,8 @@
 
         <div class="fixed-toolbar mb-30">
           <div class="container">
-            <!-- Search -->
-            <form data-search-container=".search-list" data-search-in=".item-title" class="searchbar searchbar-init search-box list-search-bx">
-              <div class="searchbar-inner">
-                <div class="searchbar-input-wrap">
-                  <input type="search" placeholder="Search address" />
-                  <i class="searchbar-icon">
-                    <svg width="24" height="24" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
-                      <path
-                        d="M9.65925 19.3102C11.8044 19.3103 13.8882 18.5946 15.5806 17.2764L21.9653 23.6612C22.4423 24.1218 23.2023 24.1086 23.663 23.6316C24.1123 23.1664 24.1123 22.4288 23.663 21.9636L17.2782 15.5788C20.5491 11.3682 19.7874 5.30335 15.5769 2.03244C11.3663 -1.23846 5.30149 -0.476784 2.03058 3.73376C-1.24033 7.9443 -0.478646 14.0092 3.73189 17.2801C5.42702 18.597 7.51269 19.3113 9.65925 19.3102ZM4.52915 4.52732C7.36245 1.69396 11.9561 1.69391 14.7895 4.52721C17.6229 7.36052 17.6229 11.9542 14.7896 14.7876C11.9563 17.6209 7.36261 17.621 4.52925 14.7877C4.5292 14.7876 4.5292 14.7876 4.52915 14.7876C1.69584 11.9749 1.67915 7.39796 4.49181 4.56465C4.50424 4.55217 4.51667 4.53974 4.52915 4.52732Z"
-                        fill="#C9C9C9"
-                      />
-                    </svg>
-                  </i>
-                </div>
-              </div>
-            </form>
-            <div class="list simple-list searchbar-not-found">
-              <ul>
-                <li>Nothing found</li>
-              </ul>
-            </div>
-
-            <div data-space-between="12" data-slides-per-view="auto" data-centered-slides="false" class="swiper-container swiper-init tabbar tab-style-1 main-swiper">
-              <div class="swiper-wrapper">
-                <div class="swiper-slide">
-                  <a href="#tabNearMe" class="tab-link tab-link-active">Near me</a>
-                </div>
-                <div class="swiper-slide">
-                  <a href="#tabPopular" class="tab-link">Popular</a>
-                </div>
-                <div class="swiper-slide">
-                  <a href="#tabTopRated" class="tab-link">Top Rated</a>
-                </div>
-                <div class="swiper-slide">
-                  <a href="#tabOther" class="tab-link">Other</a>
-                </div>
-              </div>
+            <div class="logo-content">
+            <h2 class="logo-name mt-25">01 JANUARI 2022</h2>
             </div>
           </div>
         </div>
@@ -75,12 +40,11 @@
           <div class="tabs">
             <div id="tabNearMe" class="tab tab-active">
               <div class="container">
-                <h5 class="filter-text mt-0 mb-30">We have <strong class="text-black">46</strong> Outled ready to serve you</h5>
                 <div class="list search-list mt-0 mb-20 dz-list searchbar-found">
                   <ul class="row">
                     <li class="store-card col-100 medium-50 card-list mb-20">
                       <div class="card-media">
-                        <a href="/tracking/"><img src="img/store/pic1.jpg" alt="" /></a>
+                        <a href="/tracking/"><img src="@/assets/img/pic1.jpg" alt="" /></a>
                       </div>
                       <div class="card-info">
                         <a href="/tracking/" class="button btn-dir">
@@ -100,7 +64,7 @@
                           </svg>
                           <span class="ml-10">Directions</span>
                         </a>
-                        <h5 class="item-title title"><a href="/tracking/">Centre Point Flaza</a></h5>
+                        <h5 class="item-title title"><a href="/tracking/">Bandara Soekarno Hatta</a></h5>
                         <div class="info-bottom">
                           <p class="time">09:00 AM - 10:00 PM</p>
                           <div class="location text-primary">
@@ -121,7 +85,7 @@
                     </li>
                     <li class="store-card col-100 medium-50 card-list mb-20">
                       <div class="card-media">
-                        <a href="/tracking/"><img src="img/store/pic2.jpg" alt="" /></a>
+                        <a href="/tracking/"><img src="@/assets/img/pic1.jpg" alt="" /></a>
                       </div>
                       <div class="card-info">
                         <a href="/tracking/" class="button btn-dir">
@@ -141,7 +105,7 @@
                           </svg>
                           <span class="ml-10">Directions</span>
                         </a>
-                        <h5 class="item-title title"><a href="/tracking/">Medan Plaza</a></h5>
+                        <h5 class="item-title title"><a href="/tracking/">Bandara YIA</a></h5>
                         <div class="info-bottom">
                           <p class="time">09:00 AM - 10:00 PM</p>
                           <div class="location text-primary">
@@ -162,7 +126,7 @@
                     </li>
                     <li class="store-card col-100 medium-50 card-list mb-20">
                       <div class="card-media">
-                        <a href="/tracking/"><img src="img/store/pic3.jpg" alt="" /></a>
+                        <a href="/tracking/"><img src="@/assets/img/pic1.jpg" alt="" /></a>
                       </div>
                       <div class="card-info">
                         <a href="/tracking/" class="button btn-dir">
@@ -182,7 +146,7 @@
                           </svg>
                           <span class="ml-10">Directions</span>
                         </a>
-                        <h5 class="item-title title"><a href="/tracking/">Centre Point Flaza</a></h5>
+                        <h5 class="item-title title"><a href="/tracking/">Bandara Mozes Kilangin Timika</a></h5>
                         <div class="info-bottom">
                           <p class="time">09:00 AM - 10:00 PM</p>
                           <div class="location text-primary">
@@ -203,7 +167,7 @@
                     </li>
                     <li class="store-card col-100 medium-50 card-list mb-20">
                       <div class="card-media">
-                        <a href="/tracking/"><img src="img/store/pic4.jpg" alt="" /></a>
+                        <a href="/tracking/"><img src="@/assets/img/pic1.jpg" alt="" /></a>
                       </div>
                       <div class="card-info">
                         <a href="/tracking/" class="button btn-dir">
@@ -223,7 +187,7 @@
                           </svg>
                           <span class="ml-10">Directions</span>
                         </a>
-                        <h5 class="item-title title"><a href="/tracking/">Medan Plaza</a></h5>
+                        <h5 class="item-title title"><a href="/tracking/">Bandara Ngurah Rai</a></h5>
                         <div class="info-bottom">
                           <p class="time">09:00 AM - 10:00 PM</p>
                           <div class="location svg-primary">
@@ -253,7 +217,7 @@
                   <ul class="row">
                     <li class="store-card col-100 medium-50 card-list mb-20">
                       <div class="card-media">
-                        <a href="/tracking/"><img src="img/store/pic1.jpg" alt="" /></a>
+                        <a href="/tracking/"><img src="@/assets/img/pic1.jpg" alt="" /></a>
                       </div>
                       <div class="card-info">
                         <a href="/tracking/" class="button btn-dir">

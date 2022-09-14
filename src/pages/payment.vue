@@ -17,7 +17,7 @@
         </div>
         <div class="container">
           <div class="logo-content">
-            <h1 class="logo-name fs-35 mt-40">Pembayaran</h1>
+            <h1 class="logo-name fs-35 mt-25">Pembayaran</h1>
             <p class="text-align-center pt20">Yosef Murya Kusuma A</p>
             <div class="payment">
               <div class="title">Rp.27.500.000</div>
@@ -55,20 +55,31 @@
                 <ul class="row">
                   <li class="item-content col-100 item-input">
                     <div class="item-inner">
-                      <div class="item-title item-label">Tujuan ke :</div>
+                      <div class="item-title item-label mb-0">Tujuan ke :</div>
                       <div class="item-input-wrap">
-                        <input type="text" placeholder="" class="form-control" />
+                        <input type="text" placeholder="" class="form-control pl-0 pt-0 pb-0 pr-0" />
                       </div>
                     </div>
                   </li>
                   <li class="item-content col-100 item-input">
                     <div class="item-inner">
-                      <div class="item-title item-label">Pengiriman dari :</div>
+                      <div class="item-title item-label mb-0">Pengiriman dari :</div>
                       <div class="item-input-wrap">
-                        <input type="text" placeholder="Alamat" class="form-control" />
+                        <input type="text" placeholder="Alamat" class="form-control pl-0 pt-0 pb-0 pr-0" />
                       </div>
                     </div>
                   </li>
+                  <div class="item-title item-label">Metode Pembayaran :</div>
+                  <div class="col-25">
+                    <p>
+                      <label class="radio"><input type="radio" name="demo-radio-inline" /><i class="icon-radio"></i></label> Cash
+                    </p>
+                  </div>
+                  <div class="col-75">
+                    <p>
+                      <label class="radio"><input type="radio" name="demo-radio-inline" /><i class="icon-radio"></i></label> Payment Gateway
+                    </p>
+                  </div>
                 </ul>
               </div>
               <a href="/home/" class="button-large rounded-xl button button-fill">BAYAR</a>
@@ -79,3 +90,6 @@
     </div>
   </f7-page>
 </template>
+<style scoped>
+
+</style>

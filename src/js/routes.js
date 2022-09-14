@@ -8,13 +8,17 @@ import ShoppingCartPage from "../pages/shopping-cart.vue";
 import TrackingPage from "../pages/tracking.vue";
 import WishlistPage from "../pages/wishlist.vue";
 import NotificationsAppPage from "../pages/notifications-app.vue";
-import StoreLocationsPage from "../pages/store-locations.vue";
 import RewardsPage from "../pages/rewards.vue";
 import ProfilePage from "../pages/profile.vue";
 import WriteRiviewsPage from "../pages/write-reviews.vue";
 import DeliveryPage from "../pages/delivery-form.vue";
 import CollectionPage from "../pages/collection.vue";
 import PaymentPage from "../pages/payment.vue"
+import InvoicePage from "../pages/invoice.vue";
+import BacaanPage from "../pages/bacaan.vue";
+import KwitansiPage from "../pages/kwitansi.vue";
+import LokasiTujuanPage from "../pages/lokasi-tujuan.vue";
+
 
 import DynamicRoutePage from "../pages/dynamic-route.vue";
 import RequestAndLoad from "../pages/request-and-load.vue";
@@ -26,15 +30,31 @@ var routes = [
     component: HomePage,
   },
   {
+    path:"/lokasi-tujuan/",
+    component: LokasiTujuanPage,
+  },
+  {
+    path: "/kwitansi/",
+    component: KwitansiPage,
+  },
+  {
+    path: "/bacaan/",
+    component: BacaanPage,
+  },
+  {
+    path: "/invoice/",
+    component: InvoicePage,
+  },
+  {
     path: "/payment/",
     component: PaymentPage,
   },
   {
-    path: "/collection",
+    path: "/collection/",
     component: CollectionPage,
   },
   {
-    path: "/delivery",
+    path: "/delivery/",
     component: DeliveryPage,
   },
   {
@@ -48,10 +68,6 @@ var routes = [
   {
     path: "/rewards/",
     component: RewardsPage,
-  },
-  {
-    path: "/store-locations/",
-    component: StoreLocationsPage,
   },
   {
     path: "/notifications-app/",
