@@ -1,5 +1,5 @@
 <template>
-  <f7-page name="register">
+  <f7-page name="register" class="page no-toolbar">
     <div class="page account-area">
       <div class="page-content">
         <div class="container">

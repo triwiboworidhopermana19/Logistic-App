@@ -24,6 +24,7 @@
     "Samsung >= 12"
   ],
   "dependencies": {
+    "@fortawesome/fontawesome-free": "^6.2.0",
     "axios": "^0.27.2",
     "dom7": "^4.0.4",
     "framework7": "^7.0.7",
@@ -32,7 +33,10 @@
     "material-icons": "^1.11.5",
     "skeleton-elements": "^4.0.0",
     "swiper": "^8.3.1",
-    "vue": "^3.2.37"
+    "vue": "^3.2.37",
+    "vue-axios": "^3.4.1",
+    "vue-router": "^3.2.0",
+    "vue-sweetalert2": "^5.0.5"
   },
   "devDependencies": {
     "@vitejs/plugin-vue": "^3.0.0",

@@ -18,6 +18,7 @@ import InvoicePage from "../pages/invoice.vue";
 import BacaanPage from "../pages/bacaan.vue";
 import KwitansiPage from "../pages/kwitansi.vue";
 import LokasiTujuanPage from "../pages/lokasi-tujuan.vue";
+import BarangDiTerima from "../pages/barang-diterima.vue";
 
 
 import DynamicRoutePage from "../pages/dynamic-route.vue";
@@ -28,6 +29,10 @@ var routes = [
   {
     path: "/",
     component: HomePage,
+  },
+  {
+    path: "/barang-diterima/",
+    component: BarangDiTerima,
   },
   {
     path:"/lokasi-tujuan/",

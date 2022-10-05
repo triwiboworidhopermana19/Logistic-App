@@ -17,11 +17,23 @@ import "framework7/css/bundle";
 import "../css/icons.css";
 import "../css/app.css";
 import "../css/main.scss";
+// import "../fontawesome-free/css/all.min.css";
+// import "@fortawesome/fontawesome-free/css/all.css";
+import "@fortawesome/fontawesome-free/css/all.min.css";
+import "@fortawesome/fontawesome-free/css/fontawesome.min.css";
 
 // Import App Component
 import App from "../components/app.vue";
 
+// import axios from 'axios';
 import axios from "axios";
+import VueAxios from "vue-axios";
+
+import VueSweetalert2 from "vue-sweetalert2";
+// If you don't need the styles, do not connect
+import "sweetalert2/dist/sweetalert2.min.css";
+
+// import router from './router';
 
 // Init Framework7-Vue Plugin
 Framework7.use(Framework7Vue);
@@ -43,6 +55,35 @@ setTimeout(function () {
 // Init App
 const app = createApp(App);
 
+app.use(VueAxios, axios);
+app.use(VueSweetalert2);
+
+// Vue.config.productionTip = false;
+// Vue.filter('formatDate', function (value) {
+//   if (value) {
+//     return moment(String(value)).format('MM/DD/YYYY hh:mm');
+//   }
+// });
+// app.use(router);
+
+// Tambah request interceptor untuk ongoing request
+axios.interceptors.request.use(
+  function (config) {
+    // Ambil token
+    const token = localStorage.getItem("token");
+
+    // Jika access token ada, set authorization header tiap request
+    if (token) {
+      config.headers.Authorization = `Bearer ${token}`;
+    }
+
+    return config;
+  },
+  function (error) {
+    // Do something with request error
+    return Promise.reject(error);
+  }
+);
 
 // Register Framework7 Vue components
 registerComponents(app);

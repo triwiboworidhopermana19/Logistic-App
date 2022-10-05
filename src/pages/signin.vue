@@ -1,5 +1,5 @@
 <template>
-  <f7-page name="login">
+  <f7-page name="login" class="page no-toolbar">
     <div class="page account-area">
       <div class="page-content">
         <div class="container">
@@ -9,20 +9,20 @@
             </div>
           </div>
           <div class="tab tab-active form-elements tabs">
-            <form class="tab tab-active" id="tabA1" @submit.prevent="signIn">
+            <form class="tab tab-active" id="tabA1" @submit.prevent="loginUser">
               <div class="list">
                 <ul class="row">
                   <li class="item-content item-input col-100">
                     <div class="item-inner">
                       <div class="item-input-wrap">
-                        <input v-model="username" type="text" placeholder="+62" class="form-control" />
+                        <input v-model="pegawai.email" type="text" placeholder="+62" class="form-control" />
                       </div>
                     </div>
                   </li>
                   <li class="item-content col-100 item-input">
                     <div class="item-inner">
                       <div class="item-input-wrap">
-                        <input v-model="password" :type="passwordInputType" placeholder="Password" class="form-control" />
+                        <input v-model="pegawai.password" :type="passwordInputType" placeholder="Password" class="form-control" />
                         <div :class="eyeIconStyle" @click="changePasswordVisibility">
                           <svg width="24" height="24" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
                             <path
@@ -44,10 +44,9 @@
                 <button class="button-large button rounded-xl button-fill" type="submit">LOGIN</button>
                 <p class="form-text">Password to Login</p>
               </div>
-              <div class="text-align-center account-footer pb-auto">
+              <div class="text-align-center account-footer pb-30">
                 <p class="mt-250">By signing in, you agree to the User Agreement and Privacy Terms.</p>
               </div>
-              <div class="account-footer">Block Footer</div>
             </form>
 
             <form class="tab" id="tabA2">
@@ -68,7 +67,7 @@
                 </ul>
               </div>
               <div class="clearfix pb-30">
-                <button class="button-large button rounded-xl button-fill" @click.prevent="forgotPassword">SUBMIT</button>
+                <button class="button-large button rounded-xl button-fill" type="submit" @click.prevent="forgotPassword">SUBMIT</button>
                 <p class="form-text">
                   Sign in to your registered
                   <a href="#tabA1" data-route-tab-id="tabA1" class="tab-link ml-5">Login here</a>
@@ -93,16 +92,95 @@ export default {
   },
   data() {
     return {
-      username: "",
-      password: "",
-      email: "",
+      pegawai: {
+        // username: "",
+        email: "",
+        password: "",
+      },
       passwordVisibility: false,
     };
   },
   methods: {
+    async loginUser(e) {
+      // this.$isLoading(true)
+      if (this.$data.pegawai.email.length === 0) {
+        this.errors.push("email wajib diisi !");
+        this.$swal.fire({
+          title: "Error",
+          text: "email wajib diisi !",
+          icon: "error",
+          showCancelButton: false,
+          showConfirmButton: false,
+          timer: 3000,
+        });
+      } else if (this.$data.pegawai.password.length === 0) {
+        // f7.toast.show({
+        //   text: "Password wajib diisi !",
+        //   closeTimeout: 2000,
+        //   cssClass: "auth-error",
+        // });
+        this.errors.push("Password wajib diisi !");
+        this.$swal.fire({
+          title: "Error",
+          text: "Password wajib diisi !",
+          icon: "error",
+          showCancelButton: false,
+          showConfirmButton: false,
+          timer: 3000,
+        });
+      } else {
+        // this.$isLoading(true)
+        let uri = import.meta.env.VITE_APP_ROOT_API + "/api/login";
+
+        console.log(uri);
+        // this.loadingPage = true;
+        this.axios.post(uri, this.pegawai).then((response) => {
+          // this.$isLoading(false)
+          this.messages = response.data.msg;
+          this.auth = response.data.auth;
+          this.tokens = response.data.key;
+
+          if (this.auth == import.meta.env.VITE_APP_ROLE_PEGAWAI) {
+            // console.log("AUTH : " + response.data.msg);
+            localStorage.setItem("token", response.data.key);
+            // this.$router.push("/home/");
+
+            this.f7router.navigate("/home/");
+
+            // console.log("BERHASIL LOGIN");
+          } else {
+            this.$swal.fire({
+              title: "Error",
+              html: "Sorry, you can't access this page !",
+              icon: "error",
+              showCancelButton: false,
+              showConfirmButton: false,
+              timer: 3000,
+            });
+            localStorage.removeItem("token"); //clear token atau key
+          }
+        });
+        // .catch((error) => {
+        //   this.$swal.fire({
+        //     title: "Error",
+        //     html: error.response.data.msg,
+        //     icon: "error",
+        //     showCancelButton: false,
+        //     showConfirmButton: false,
+        //     timer: 3000,
+        //   });
+        //   localStorage.removeItem("token"); //clear token atau key
+        // });
+        // this.$isLoading(false)
+        return true;
+      }
+
+      e.preventDefault();
+    },
     changePasswordVisibility() {
       this.passwordVisibility = !this.passwordVisibility;
     },
+
     async signIn() {
       const loading = f7.dialog.progress();
 
