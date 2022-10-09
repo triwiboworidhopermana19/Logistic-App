@@ -19,6 +19,9 @@ import BacaanPage from "../pages/bacaan.vue";
 import KwitansiPage from "../pages/kwitansi.vue";
 import LokasiTujuanPage from "../pages/lokasi-tujuan.vue";
 import BarangDiTerima from "../pages/barang-diterima.vue";
+import JadwalPengiriman from "../pages/jadwal-pengiriman.vue";
+import HasilScan from "../pages/hasil-scan.vue";
+import PackingPage from "../pages/packing.vue";
 
 
 import DynamicRoutePage from "../pages/dynamic-route.vue";
@@ -29,6 +32,18 @@ var routes = [
   {
     path: "/",
     component: HomePage,
+  },
+  {
+    path: "/packing/",
+    component:PackingPage,
+  },
+  {
+    path: "/hasil-scan/",
+    component: HasilScan,
+  },
+  {
+    path: "/jadwal-pengiriman/",
+    component: JadwalPengiriman,
   },
   {
     path: "/barang-diterima/",

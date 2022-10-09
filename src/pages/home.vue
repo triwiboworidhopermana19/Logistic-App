@@ -229,7 +229,7 @@
                   </a>
                 </div>
                 <div class="dz-content" style="padding-top: 10px">
-                  <h5 class="title"><a href="/products/">Packing</a></h5>
+                  <h5 class="title"><a href="/packing/">Packing</a></h5>
                   <!-- <span class="menus text-primary">67 Menus</span> -->
                 </div>
               </div>

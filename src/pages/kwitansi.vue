@@ -58,6 +58,9 @@
               </div>
             </div>
             <hr class="dash" />
+            <div class="text-align-center pb-20 pt-60">
+              <h2 class="mb-20">[BARCODE]</h2>
+            </div>
           </div>
           <div class="pt-30">
             <a href="/home/" class="button-large rounded-xl button button-fill">HOME</a>

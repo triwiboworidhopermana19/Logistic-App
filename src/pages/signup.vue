@@ -24,11 +24,11 @@
               </svg>
             </div>
             <div class="logo-content">
-              <h2 class="logo-name">Ombe</h2>
+              <h2 class="logo-name">Logistic</h2>
             </div>
           </div>
           <div class="form-elements">
-            <form @submit.prevent="signUp">
+            <form @submit.prevent="registerUser">
               <div class="title-head">
                 <h2 class="title">Create an account</h2>
                 <p>
@@ -38,32 +38,13 @@
               </div>
               <div class="list">
                 <ul class="row">
-                  <li
-                    class="
-                      item-content
-                      col-100
-                      item-input item-input-with-value
-                    "
-                  >
-                    <div class="item-inner">
-                      <div class="item-title item-label">Username</div>
-                      <div class="item-input-wrap">
-                        <input
-                          v-model="username"
-                          type="text"
-                          placeholder="Username"
-                          class="form-control"
-                        />
-                      </div>
-                    </div>
-                  </li>
                   <li class="item-content col-100 item-input">
                     <div class="item-inner">
                       <div class="item-title item-label">Email</div>
                       <div class="item-input-wrap">
                         <input
-                          v-model="email"
-                          type="email"
+                          v-model="form.email"
+                          type="text"
                           placeholder="Email Address"
                           class="form-control"
                         />
@@ -75,10 +56,43 @@
                       <div class="item-title item-label">Password</div>
                       <div class="item-input-wrap">
                         <input
-                          v-model="password"
+                          v-model="form.password"
                           :type="passwordInputType"
                           placeholder="Password"
-                          id="dz-password"
+                          class="form-control"
+                        />
+                        <div
+                          :class="eyeIconStyle"
+                          @click="changePasswordVisibility"
+                        >
+                          <svg
+                            width="24"
+                            height="24"
+                            viewBox="0 0 24 24"
+                            fill="none"
+                            xmlns="http://www.w3.org/2000/svg"
+                          >
+                            <path
+                              d="M22.919 11.606C22.786 11.3 19.572 4.00002 12 4.00002C4.42801 4.00002 1.21401 11.3 1.08101 11.606C1.02764 11.7305 1.00012 11.8646 1.00012 12C1.00012 12.1355 1.02764 12.2695 1.08101 12.394C1.21401 12.7 4.42801 20 12 20C19.572 20 22.786 12.7 22.919 12.394C22.9724 12.2695 22.9999 12.1355 22.9999 12C22.9999 11.8646 22.9724 11.7305 22.919 11.606ZM12 18C6.60001 18 3.83301 13.411 3.11001 12C3.83501 10.614 6.64801 6.00002 12 6.00002C17.394 6.00002 20.165 10.586 20.89 12C20.164 13.386 17.352 18 12 18Z"
+                              fill="#309F5F"
+                            />
+                            <path
+                              d="M12 8C11.2089 8 10.4355 8.2346 9.77772 8.67412C9.11993 9.11365 8.60723 9.73836 8.30448 10.4693C8.00173 11.2002 7.92252 12.0044 8.07686 	12.7804C8.2312 13.5563 8.61216 14.269 9.17157 14.8284C9.73098 15.3878 10.4437 15.7688 11.2196 15.9231C11.9956 16.0775 12.7998 15.9983 13.5307 15.6955C14.2616 15.3928 14.8864 14.8801 15.3259 14.2223C15.7654 13.5645 16 12.7911 16 12C16 10.9391 15.5786 9.92172 14.8284 9.17157C14.0783 8.42143 13.0609 8 12 8ZM12 14C11.6044 14 11.2178 13.8827 10.8889 13.6629C10.56 13.4432 10.3036 13.1308 10.1522 12.7654C10.0009 12.3999 9.96126 11.9978 10.0384 11.6098C10.1156 11.2219 10.3061 10.8655 10.5858 10.5858C10.8655 10.3061 11.2219 10.1156 11.6098 10.0384C11.9978 9.96126 12.3999 10.0009 12.7654 10.1522C13.1308 10.3036 13.4432 10.56 13.6629 10.8889C13.8827 11.2178 14 11.6044 14 12C14 12.5304 13.7893 13.0391 13.4142 13.4142C13.0391 13.7893 12.5304 14 12 14Z"
+                              fill="#309F5F"
+                            />
+                          </svg>
+                        </div>
+                      </div>
+                    </div>
+                  </li>
+                  <li class="item-content col-100 item-input">
+                    <div class="item-inner">
+                      <div class="item-title item-label">Password</div>
+                      <div class="item-input-wrap">
+                        <input
+                          v-model="form.cpassword"
+                          :type="passwordInputType"
+                          placeholder="Password"
                           class="form-control"
                         />
                         <div
@@ -110,8 +124,7 @@
               <div class="clearfix text-align-center pb-30">
                 <button
                   type="submit"
-                  :class="`button-large button button-fill rounded-xl ${!formValid ? 'button-gray' : ''}`"
-                  :disabled="!formValid"
+                  class="button-large button button-fill rounded-xl"
                 >
                   SIGN UP
                 </button>
@@ -139,39 +152,162 @@ export default {
   },
   data() {
     return {
+      form: {
+        // username: "",
+        email: "",
+        password: "",
+        cpassword:"",
+      },
       passwordVisibility: false,
-      username: "",
-      email: "",
-      password: "",
     };
   },
   methods: {
+    async registerUser(e) {
+      // this.$isLoading(true)
+      if (this.$data.form.email.length === 0) {
+        this.errors.push("email wajib diisi !");
+        this.$swal.fire({
+          title: "Error",
+          text: "email wajib diisi !",
+          icon: "error",
+          showCancelButton: false,
+          showConfirmButton: false,
+          timer: 3000,
+        });
+      } else if (this.$data.form.password.length === 0) {
+        // f7.toast.show({
+        //   text: "Password wajib diisi !",
+        //   closeTimeout: 2000,
+        //   cssClass: "auth-error",
+        // });
+        this.errors.push("Password wajib diisi !");
+        this.$swal.fire({
+          title: "Error",
+          text: "Password wajib diisi !",
+          icon: "error",
+          showCancelButton: false,
+          showConfirmButton: false,
+          timer: 3000,
+        });
+      } else if (this.$data.form.cpassword.length === 0) {
+        // f7.toast.show({
+        //   text: "Password wajib diisi !",
+        //   closeTimeout: 2000,
+        //   cssClass: "auth-error",
+        // });
+        this.errors.push("Password wajib diisi !");
+        this.$swal.fire({
+          title: "Error",
+          text: "Password wajib diisi !",
+          icon: "error",
+          showCancelButton: false,
+          showConfirmButton: false,
+          timer: 3000,
+        });
+      } else {
+        // this.$isLoading(true)
+        localStorage.getItem("token");
+        let uri = import.meta.env.VITE_APP_ROOT_API + "/api/register";
+        this.axios.post(uri, {
+          email: this.form.email,
+          password: this.form.password,
+          cpassword: this.form.cpassword,
+        })
+        .then((response) => {
+            this.$swal.fire({
+              title: "Success",
+              text: "created successfully",
+              icon: "success",
+              showCancelButton: false,
+              showConfirmButton: false,
+              timer: 2000,
+            });
+          })
+          .catch((e) => {
+            console.log("E : " + this.e);
+            this.$swal.fire({
+              title: "Error!",
+              text: "failed to create!",
+              icon: "error",
+              showCancelButton: false,
+              showConfirmButton: false,
+              timer: 1000,
+            });
+          });
+        // console.log(uri);
+        // this.loadingPage = true;
+        // this.axios.post(uri, this.pegawai).then((response) => {
+        //   // this.$isLoading(false)
+        //   this.messages = response.data.msg;
+        //   this.auth = response.data.auth;
+        //   this.tokens = response.data.key;
+
+        //   if (this.auth == import.meta.env.VITE_APP_ROLE_PEGAWAI) {
+        //     // console.log("AUTH : " + response.data.msg);
+        //     localStorage.setItem("token", response.data.key);
+        //     // this.$router.push("/home/");
+
+        //     this.f7router.navigate("/login/");
+
+        //     // console.log("BERHASIL LOGIN");
+        //   } else {
+        //     this.$swal.fire({
+        //       title: "Error",
+        //       html: "Sorry, you can't access this page !",
+        //       icon: "error",
+        //       showCancelButton: false,
+        //       showConfirmButton: false,
+        //       timer: 3000,
+        //     });
+        //     localStorage.removeItem("token"); //clear token atau key
+        //   }
+        // });
+        // .catch((error) => {
+        //   this.$swal.fire({
+        //     title: "Error",
+        //     html: error.response.data.msg,
+        //     icon: "error",
+        //     showCancelButton: false,
+        //     showConfirmButton: false,
+        //     timer: 3000,
+        //   });
+        //   localStorage.removeItem("token"); //clear token atau key
+        // });
+        // this.$isLoading(false)
+        this.f7router.navigate("/login/");
+        
+        e.preventDefault();
+      }
+
+      
+    },
     changePasswordVisibility() {
       this.passwordVisibility = !this.passwordVisibility;
     },
-    async signUp() {
-      const loading = f7.dialog.progress();
+    // async signUp() {
+    //   const loading = f7.dialog.progress();
 
-      const [_, error] = await register(
-        this.username,
-        this.email,
-        this.password
-      );
+    //   const [_, error] = await register(
+    //     this.username,
+    //     this.email,
+    //     this.password,
+    //     this.cpassword,
+    //   );
 
-      loading.close();
+    //   loading.close();
 
-      if (error) {
-        f7.toast.show({
-          text: error.message,
-          closeTimeout: 2000,
-          cssClass: "auth-error",
-        });
+    //   if (error) {
+    //     f7.toast.show({
+    //       text: error.message,
+    //       closeTimeout: 2000,
+    //       cssClass: "auth-error",
+    //     });
 
-        return;
-      }
+    //     return;
+    //   }
 
-      this.f7router.navigate("/login/");
-    },
+    //   this.f7router.navigate("/login/");
+    // },
   },
   computed: {
     passwordInputType() {
@@ -179,13 +315,6 @@ export default {
     },
     eyeIconStyle() {
       return this.passwordVisibility ? "show-pass active" : "show-pass";
-    },
-    formValid() {
-      return (
-        this.username.length > 0 &&
-        this.email.length > 0 &&
-        this.password.length > 0
-      );
     },
   },
 };

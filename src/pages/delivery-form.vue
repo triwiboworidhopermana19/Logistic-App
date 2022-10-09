@@ -89,7 +89,7 @@
                 </ul>
               </div>
               <div class="clearfix text-align-center pb-30">
-                <button type="submit" :class="`button-large button button-fill rounded-xl ${!formValid ? 'button-orange' : ''}`" :disabled="!formValid">Submit</button>
+                <button type="submit" class="button-large button button-fill rounded-xl">Submit</button>
               </div>
             </form>
           </div>
